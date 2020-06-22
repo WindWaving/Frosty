@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CardComponent">
+        <attr name="title" format="string"/>
+        <attr name="color" format="color"/>
+        <attr name="backgrd" format="reference"/>
+        <attr name="bkgAlpha" format="dimension"/>
+        <attr name="cirSize" format="dimension"/>
+        <attr name="cirImg" format="reference"/>
+        <attr name="cirImgMTop" format="dimension"/>
+        <attr name="cirImgMBot" format="dimension"/>
+    </declare-styleable>
+</resources>

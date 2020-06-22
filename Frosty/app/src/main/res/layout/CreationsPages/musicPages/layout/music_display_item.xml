@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fixCardHgtS"
+    android:paddingHorizontal="@dimen/itemSidePad"
+    android:paddingVertical="@dimen/itemUdPad"
+    android:orientation="horizontal"
+    android:background="@drawable/round_card"
+    >
+    <LinearLayout
+        android:id="@+id/music_text"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/m_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/pre_music"/>
+
+        <TextView
+            android:id="@+id/m_desc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/pre_music_word"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/music_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/music_on"
+        android:scaleType="centerInside"
+        android:focusable="false"
+        android:clickable="true"
+        />
+</LinearLayout>

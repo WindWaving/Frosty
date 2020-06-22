@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/itemSidePad"
+    android:paddingVertical="@dimen/itemUdPad"
+    android:background="@drawable/round_card"
+    android:elevation="@dimen/cardZ"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_content"
+        android:paddingHorizontal="@dimen/itemSidePad"
+        android:paddingVertical="@dimen/itemUdPad"
+        />
+
+</LinearLayout>

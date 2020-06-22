@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/navi_pick"
+        android:title="@string/tab_pick"/>
+    <item android:id="@+id/navi_create"
+        android:title="@string/tab_create"/>
+    <item android:id="@+id/navi_mine"
+        android:title="@string/tab_mine"/>
+</menu>

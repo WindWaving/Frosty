@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    common-->
+    <dimen name="topBarHgt">60dp</dimen>
+    <dimen name="tabHgt">80dp</dimen>
+    <dimen name="outerPad">20dp</dimen>
+    <dimen name="picBelow">10dp</dimen>
+    <dimen name="cardZ">5dp</dimen>
+    <dimen name="toolbarFont">24sp</dimen>
+<!--   common card-->
+    <dimen name="cardCorner">10dp</dimen>
+    <dimen name="likeSize">30dp</dimen>
+    <dimen name="likeFont">20sp</dimen>
+    <dimen name="itemSpace">10dp</dimen>
+<!--    pick page-->
+    <dimen name="picHgt">200dp</dimen>
+    <dimen name="itemSidePad">10dp</dimen>
+    <dimen name="itemUdPad">5dp</dimen>
+    <dimen name="itemConText">15sp</dimen>
+    <dimen name="itemAuthorText">15sp</dimen>
+<!--    creation page-->
+    <dimen name="cCardWidth">100dp</dimen>
+    <dimen name="cCardHgt">300dp</dimen>
+    <dimen name="cCardMargin">30dp</dimen>
+    <dimen name="cCardPad">20dp</dimen>
+    <dimen name="cCardAlpha">0.6dp</dimen>
+    <dimen name="cCardPic">50dp</dimen>
+    <dimen name="cCardPicMTop">20dp</dimen>
+    <dimen name="cCardPicMBot">35dp</dimen>
+<!--mine page-->
+    <dimen name="myCardWidth">100dp</dimen>
+    <dimen name="myCardHgt">300dp</dimen>
+<!--    yiyan display-->
+<!--    music display-->
+    <dimen name="fixCardHgtS">100dp</dimen>
+
+<!--    picture display-->
+    <dimen name="picCardHgt">120dp</dimen>
+    <dimen name="picInCardHgt">80dp</dimen>
+    <dimen name="wordInPicCardHgt">20dp</dimen>
+</resources>

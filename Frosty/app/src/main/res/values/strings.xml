@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Frosty</string>
+<!--    toolbar-->
+    <string name="home_title">Frosty</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="contract">联系</string>
+<!--    tabs-->
+    <string name="tab_pick">精选</string>
+    <string name="tab_create">创作</string>
+    <string name="tab_mine">我的</string>
+<!--    creation-->
+    <string name="yiyan">一言</string>
+    <string name="topic">共论</string>
+    <string name="music">品曲</string>
+    <string name="image">赏画</string>
+    <string name="docs">圣贤</string>
+<!--    mine-->
+    <string name="account">我的账户</string>
+    <string name="mine_creation">我的创作</string>
+    <string name="favorites">我的收藏</string>
+<!--    music-->
+    <string name="pre_music">歌曲</string>
+    <string name="pre_music_word">配词：</string>
+<!--    test-->
+    <string name="test_content">测试项目觉得覅飞机觉得覅啥附件四绝对是覅地方就爱就爱非机动撒附近欧迪芬骄傲的戴假发你减肥的积分</string>
+    <string name="test_author">作者</string>
+
+</resources>

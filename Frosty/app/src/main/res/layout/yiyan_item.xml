@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/cardYiyanBkg"
+    app:cardCornerRadius="@dimen/cardCorner">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/itemSidePad"
+        android:paddingRight="@dimen/itemSidePad"
+        android:paddingTop="@dimen/itemUdPad"
+        android:paddingBottom="@dimen/itemUdPad">
+        <TextView
+            android:id="@+id/pick_item_yiyan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/itemConText"
+            android:textColor="@color/cardYiyanText"
+            android:fontFamily="sans-serif-light"
+            android:elevation="1dp"
+            android:text="@string/test_content"/>
+        <TextView
+            android:id="@+id/pick_item_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/itemAuthorText"
+            android:textColor="@color/cardYiyanText"
+            android:fontFamily="sans-serif-light"
+            android:layout_alignBottom="@id/pick_item_yiyan"
+            android:text="@string/test_author"/>
+    </RelativeLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
