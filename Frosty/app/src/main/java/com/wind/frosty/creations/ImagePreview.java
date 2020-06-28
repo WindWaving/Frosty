@@ -22,7 +22,7 @@ public class ImagePreview extends AppCompatActivity {
         goback();
         initPhotoView();
     }
-    private void goback(){
+        private void goback(){
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

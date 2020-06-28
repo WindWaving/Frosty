@@ -1,18 +1,23 @@
-const { Topic,Comment } = require('../../models')
+const { Topic,Comment,User } = require('../../models')
 var router = require('koa-router')();
 router.prefix('/topic')
 
 router.get('/',async(ctx)=>{
     let {offset,limit}=ctx.request.query;
     try{
-        let res=await Topic.findAll({
+        let res=await Topic.findAndCountAll({
             offset:+offset,
-            limit:+limit
+            limit:+limit,
+            include:[{
+                model:User,
+                attributes:['nickname']
+            }]
         });
         ctx.body={
             err:0,
             info:{
-                data:res
+                data:res.rows,
+                total:res.count
             }
         }
     }catch(err){
@@ -27,7 +32,7 @@ router.get('/:authorId',async(ctx)=>{
     let {authorId}=ctx.params;
     let {offset,limit}=ctx.request.query;
     try{
-        let res=await Topic.findAll({
+        let res=await Topic.findAndCountAll({
             offset:+offset,
             limit:+limit,
             where:{authorId:authorId}
@@ -35,7 +40,8 @@ router.get('/:authorId',async(ctx)=>{
         ctx.body={
             err:0,
             info:{
-                data:res
+                data:res.rows,
+                total:res.count
             }
         }
     }catch(err){

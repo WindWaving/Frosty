@@ -78,8 +78,6 @@ public class ImageActivity extends AppCompatActivity {
          if (convertView == null) {
              convertView = LayoutInflater.from(context).inflate(R.layout.picture_display_item, null);
              vh = new ViewHolder();
-//             PhotoView pv=convertView.findViewById(R.id.pics_img);
-//             vh.img = pv;
              vh.img=convertView.findViewById(R.id.pics_img);
              vh.words = convertView.findViewById(R.id.pics_words);
              convertView.setTag(vh);
@@ -88,14 +86,6 @@ public class ImageActivity extends AppCompatActivity {
          //写入图片
          vh.img.setImageResource(R.drawable.pick_title);
          vh.words.setText("测试用的文字");
-//         vh.img.setOnClickListener(new View.OnClickListener() {
-//             @Override
-//             public void onClick(View v) {
-//                 System.out.println("do it");
-//                 Intent intent=new Intent();
-//                 context.startActivity(intent);
-//             }
-//         });
          return convertView;
      }
  }

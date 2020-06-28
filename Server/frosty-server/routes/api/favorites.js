@@ -66,6 +66,24 @@ router.post('/',async(ctx)=>{
     }
 })
 
+router.delete('/:fid',async(ctx)=>{
+    let {fid}=ctx.params;
+    try{
+        await Favorites.destroy({
+            where:{fid:fid}
+        })
+        ctx.body={
+            err:0,
+            info:"删除成功"
+        }
+    }catch(err){
+        ctx.body={
+            err:-2,
+            info:"删除失败，"+err
+        }
+    }
+})
+
 //清空用户某个类型的收藏夹
 router.delete('/:uid/:type',async(ctx)=>{
     let {uid,type}=ctx.params;

@@ -5,36 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.widget.AbsListView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.wind.frosty.MainActivity;
 import com.wind.frosty.R;
+import com.wind.frosty.network.HttpManager;
 import com.wind.frosty.services.MusicService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.Inflater;
 
-public class MusicActivity extends AppCompatActivity {
-    ListView listView;
+public class MusicActivity extends LoadListView {
     MyReceiver receiver;
     public static final String MUSIC_LIST="MUSICLIST";
     ImageButton playMusic;
@@ -42,58 +31,53 @@ public class MusicActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.music_display);
+
+        //初始化父类值
         listView=findViewById(R.id.music_listview);
+        httpManager= HttpManager.getInstance();
+        callback=new getCallback();
+        data=new JSONArray();
+        limit=10;
+        url=httpManager.apiUrl+"music";
 
-
-
-        //注册广播
+        //注册广播，接受服务发送的广播来更新ui
         receiver=new MyReceiver();
         IntentFilter filter=new IntentFilter();
         filter.addAction(MusicActivity.MUSIC_LIST);
         registerReceiver(receiver,filter);
-        //启动服务
+        //启动音乐播放服务
         Intent service=new Intent(MusicActivity.this, MusicService.class);
         startService(service);
 
-        try {
-            initView();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        loadData();
     }
 
-    private void initView() throws JSONException {
+    @Override
+    void initListView(JSONArray data) throws JSONException {
         String[] itemNames=new String[]{"music_name","music_desc"};
-        String data="[{\"name\":\"test conetnt\",\"desc\":\"test author\"}]";
-        JSONArray test=new JSONArray(data);
         int[] itemIds=new int[]{R.id.m_name,R.id.m_desc};
         ArrayList<HashMap<String,Object>> listItem=new ArrayList<HashMap<String,Object>>();
-        for(int i=0;i<test.length();++i){
+        for(int i=0;i<data.length();++i){
             HashMap<String,Object> map=new HashMap<String,Object>();
-            JSONObject carddata=test.getJSONObject(i);
-            map.put("music_name",carddata.getString("name"));
-            map.put("music_desc",carddata.getString("desc"));
+            JSONObject carddata=data.getJSONObject(i);
+            map.put(itemNames[0],carddata.getString("name"));
+            map.put(itemNames[1],carddata.getString("words"));
             listItem.add(map);
         }
-        SimpleAdapter mAdapter=new MusicAdapter(this,listItem,R.layout.music_display_item,itemNames,itemIds);
+        final SimpleAdapter mAdapter=new MusicAdapter(this,listItem,R.layout.music_display_item,itemNames,itemIds);
         listView.setAdapter(mAdapter);
 
-        //选中事件
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                playMusic=view.findViewById(R.id.music_play);
-//                playMusic.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent broadIntent=new Intent(MusicService.MUSIC_SERVICE);
-//                        broadIntent.putExtra("path","http://tool.liumingye.cn/music/?page=audioPage&type=YQD&name=%E4%BB%8E%E5%89%8D%E6%9C%89%E5%BA%A7%E7%81%B5%E5%89%91%E5%B1%B1");
-//                        sendBroadcast(broadIntent);
-//                        System.out.println("in");
-//                    }
-//                });
-//            }
-//        });
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                handleScrollState(mAdapter,scrollState);
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                handleOnScroll(firstVisibleItem,visibleItemCount);
+            }
+        });
     }
 
 

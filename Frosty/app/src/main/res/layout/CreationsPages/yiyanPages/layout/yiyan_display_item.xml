@@ -22,13 +22,12 @@
             android:id="@+id/yiyan_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/test_content"
             />
         <TextView
+            android:id="@+id/yiyan_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/yiyan_content"
-            android:text="@string/test_author"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>

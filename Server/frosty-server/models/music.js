@@ -9,6 +9,7 @@ const Music=sequelize.define('music',{
     musicUrl:{
         type:Sequelize.STRING
     },
+    name:Sequelize.STRING,
     words:Sequelize.TEXT,
     //authorId:Sequelize.INTEGER,
     likes:{
