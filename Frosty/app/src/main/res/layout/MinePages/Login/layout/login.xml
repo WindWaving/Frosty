@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/cardbkg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/loginCardY"
+        android:id="@+id/card_container"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sign_btn"
+        android:layout_width="@dimen/loginBtnR"
+        android:layout_height="@dimen/loginBtnR"
+        android:background="@drawable/btn_circle"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/loginBtnPad"
+        android:layout_marginTop="80dp"
+        android:textSize="@dimen/loginBtnFont"
+        android:onClick="toSign"
+        />
+<!--        />-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        >-->
+<!--        -->
+<!--        <Button-->
+<!--            android:layout_width="@dimen/loginBtnR"-->
+<!--            android:layout_height="@dimen/loginBtnR"-->
+<!--            android:text="@string/signup"-->
+<!--            android:padding="@dimen/loginBtnPad"-->
+<!--            android:layout_marginEnd="@dimen/loginBtnStart"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:textSize="@dimen/loginBtnFont"-->
+<!--            android:background="@drawable/round_card"-->
+<!--            android:onClick="toRegister"-->
+<!--            />-->
+
+<!--    </RelativeLayout>-->
+
+</LinearLayout>

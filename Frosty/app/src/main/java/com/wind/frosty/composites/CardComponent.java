@@ -74,5 +74,6 @@ public class CardComponent extends MaterialCardView {
         title.setEms(1);//竖直文字
         layout.addView(title,textParams);
 
+
     }
 }

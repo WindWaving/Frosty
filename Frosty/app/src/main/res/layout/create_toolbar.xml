@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/create_toolbar"
+android:layout_height="?attr/actionBarSize"
+android:layout_width="match_parent"
+android:background="@color/colorPrimary"
+app:navigationIcon="@mipmap/back_arrow">
+<!--<RelativeLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    >-->
+<!--    <TextView-->
+<!--        android:id="@+id/back_bar_title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="新的创作"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:textSize="@dimen/toolbarFont"/>-->
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="发布"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:onClick="toPost"/>-->
+<!--</RelativeLayout>-->
+
+</androidx.appcompat.widget.Toolbar>

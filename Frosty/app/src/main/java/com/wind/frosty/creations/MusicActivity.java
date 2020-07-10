@@ -80,6 +80,11 @@ public class MusicActivity extends LoadListView {
         });
     }
 
+    @Override
+    void toCreate(View view) {
+        Intent intent=new Intent(this,MusicCreate.class);
+        startActivity(intent);
+    }
 
 
     private class MyReceiver extends BroadcastReceiver{

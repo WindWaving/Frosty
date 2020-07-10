@@ -1,9 +1,11 @@
 package com.wind.frosty;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +17,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wind.frosty.mine.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //设置toolbar为应用栏
-        myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
         pager=findViewById(R.id.pager_view);
         bottomNavigation=findViewById(R.id.navigation_view);
         initFragments();
@@ -158,5 +161,10 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void toLoginPage(View view){
+        Intent intent=new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

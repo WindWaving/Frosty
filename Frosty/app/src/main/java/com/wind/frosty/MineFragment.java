@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.wind.frosty.composites.CardComponent;
-import com.wind.frosty.creations.YiyanActivity;
 import com.wind.frosty.mine.MyAccount;
 import com.wind.frosty.mine.MyCreation;
 import com.wind.frosty.mine.MyFavorites;

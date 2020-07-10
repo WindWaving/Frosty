@@ -1,6 +1,8 @@
 package com.wind.frosty.creations;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -57,6 +59,12 @@ public class TopicActivity extends LoadListView {
                 handleOnScroll(firstVisibleItem,visibleItemCount);
             }
         });
+    }
+
+    @Override
+    void toCreate(View view) {
+        Intent intent=new Intent(this,TopicCreate.class);
+        startActivity(intent);
     }
 
 }

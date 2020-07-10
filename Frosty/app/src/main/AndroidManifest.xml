@@ -30,6 +30,11 @@
         <activity android:name=".mine.MyCreation"></activity>
         <activity android:name=".mine.MyFavorites"></activity>
         <activity android:name=".creations.ImagePreview"></activity>
+        <activity android:name=".creations.YiyanCreate"></activity>
+        <activity android:name=".creations.MusicCreate"></activity>
+        <activity android:name=".creations.TopicCreate"></activity>
+        <activity android:name=".creations.ImageCreate"></activity>
+        <activity android:name=".mine.LoginActivity"></activity>
 
         <service android:name=".services.MusicService" android:enabled="true"></service>
     </application>

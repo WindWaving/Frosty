@@ -6,4 +6,6 @@
     <color name="cardYiyanBkg">#777</color>
     <color name="cardYiyanText">#fff</color>
     <color name="toolbarTitle">#fff</color>
+    <color name="gradienBtnStart">#cdcef4</color>
+    <color name="gradienBtnEnd">#fff</color>
 </resources>

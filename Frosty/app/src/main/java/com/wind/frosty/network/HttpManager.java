@@ -115,7 +115,13 @@ public class HttpManager {
                         public void run() {
                             try {
                                 if(finalObj.getInt("err")==0){
-                                    callback.onSuccess(call, finalObj.getJSONObject("info"));
+                                    JSONObject info;
+                                    try{
+                                        info=finalObj.getJSONObject("info");
+                                    }catch (Exception e){
+                                        info=new JSONObject("{\"info\":\""+finalObj.getString("info")+"\"}");
+                                    }
+                                    callback.onSuccess(call, info);
                                 }else{
                                     callback.onServerError(call, finalObj.getString("info"));
                                 }

@@ -1,6 +1,8 @@
 package com.wind.frosty.creations;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -67,5 +69,10 @@ public class YiyanActivity extends LoadListView {
                 handleOnScroll(firstVisibleItem,visibleItemCount);
             }
         });
+    }
+
+    public void toCreate(View view) {
+        Intent intent=new Intent(this,YiyanCreate.class);
+        startActivity(intent);
     }
 }

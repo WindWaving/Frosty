@@ -1,6 +1,7 @@
 package com.wind.frosty.creations;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -80,6 +81,7 @@ public abstract class LoadListView extends AppCompatActivity {
     }
 
     abstract void initListView(JSONArray data) throws JSONException;
+    abstract void toCreate(View view);
 
     class getCallback extends BaseCallback{
         @Override
@@ -100,7 +102,7 @@ public abstract class LoadListView extends AppCompatActivity {
 
         @Override
         public void onServerError(Call call, String reason) {
-            System.out.println("服务器错误");
+            System.out.println("服务器错误 "+reason);
         }
 
     }

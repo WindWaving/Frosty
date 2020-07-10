@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/btn_normal" android:state_pressed="true" />
+    <item android:drawable="@drawable/btn_normal" android:state_pressed="false" />
+<!--    <item android:state_pressed="true">-->
+<!--        <shape android:shape="oval">-->
+<!--            <corners android:radius="@dimen/loginBtnR"/>-->
+<!--            <solid android:color="#d5caf9"/>-->
+<!--            <size android:width="@dimen/loginBtnR"-->
+<!--                android:height="@dimen/loginBtnR"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--        <item>-->
+<!--        <layer-list>-->
+<!--            <item android:width="@dimen/loginBtnR"-->
+<!--                android:height="@dimen/loginBtnR"-->
+<!--                android:top="10dp"-->
+<!--                >-->
+<!--                <shape android:shape="oval">-->
+<!--                    <gradient android:startColor="@color/gradienBtnStart" android:endColor="@color/gradienBtnEnd" android:gradientRadius="@dimen/loginBtnBkgRadius" android:type="radial"/>-->
+<!--                </shape>-->
+<!--            </item>-->
+<!--            <item android:width="@dimen/loginBtnR"-->
+<!--                android:height="@dimen/loginBtnR">-->
+<!--                <shape android:shape="oval">-->
+<!--                    <corners android:radius="@dimen/loginBtnR"/>-->
+<!--                    <solid android:color="#d5caf9"/>-->
+<!--                </shape>-->
+<!--            </item>-->
+<!--        </layer-list>-->
+<!--    </item>-->
+</selector>
