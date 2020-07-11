@@ -10,6 +10,10 @@ const Topic=sequelize.define('topic',{
     likes:{
         type:Sequelize.INTEGER,
         defaultValue:0
+    },
+    images:{
+        type:Sequelize.STRING,
+        allowNull:true
     }
     //authorId:Sequelize.INTEGER
 })

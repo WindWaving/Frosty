@@ -8,7 +8,11 @@ const Reply=sequelize.define('reply',{
     },
     uid:Sequelize.INTEGER,
     //parentId:Sequelize.INTEGER,
-    content:Sequelize.STRING
+    content:Sequelize.STRING,
+    images:{
+        type:Sequelize.STRING,
+        allowNull:true
+    }
 })
 
 module.exports=Reply

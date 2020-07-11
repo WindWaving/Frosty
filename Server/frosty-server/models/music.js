@@ -11,6 +11,10 @@ const Music=sequelize.define('music',{
     },
     name:Sequelize.STRING,
     words:Sequelize.TEXT,
+    images:{
+        type:Sequelize.STRING,
+        allowNull:true
+    },
     //authorId:Sequelize.INTEGER,
     likes:{
         type:Sequelize.INTEGER,

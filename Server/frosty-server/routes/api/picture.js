@@ -1,6 +1,7 @@
 const { Picture,Comment } = require('../../models')
 var router = require('koa-router')();
 router.prefix('/picture')
+const upload=require('../../multer-config')
 
 router.get('/',async(ctx)=>{
     let {offset,limit}=ctx.request.query;
@@ -46,22 +47,38 @@ router.get('/:authorId',async(ctx)=>{
     }
 })
 
-router.post('/',async(ctx)=>{
-    let {imgUrl,content,authorId}=ctx.request.body;
-    try{
-        let res=await Picture.create({
-            content:content,
-            imgUrl:imgUrl,
-            authorId:authorId
-        })
-        ctx.body={
-            err:0,
-            info:"添加成功"
+router.post('/',upload.fields([{
+    name: 'images',
+    maxCount: 1
+}]),async(ctx)=>{
+    let {content,authorId}=ctx.request.body;
+    let {images} = ctx.request.files;
+    var imgUrl="";
+    if(images&&images.length==1){
+        console.log(images,images.length);
+        let path=images[0].path.replace(/\\/g,'/');
+        path=path.substring(7);//删除public路径名
+        imgUrl=`${ctx.state.serverUrl}${path}`
+        try{
+            await Picture.create({
+                content:content,
+                imgUrl:imgUrl,
+                authorId:authorId
+            })
+            ctx.body={
+                err:0,
+                info:"添加成功"
+            }
+        }catch(err){
+            ctx.body={
+                err:-2,
+                info:"添加错误，"+err
+            }
         }
-    }catch(err){
+    }else{
         ctx.body={
-            err:-2,
-            info:"添加错误，"+err
+            err:-1,
+            info:"图片数量不合法"
         }
     }
 })

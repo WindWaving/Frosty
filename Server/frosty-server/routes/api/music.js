@@ -1,5 +1,6 @@
 const { Music,Comment,Favorites,Sequelize,User } = require('../../models')
 var router = require('koa-router')();
+const upload=require('../../multer-config')
 router.prefix('/music')
 const Op=Sequelize.Op
 
@@ -99,14 +100,27 @@ router.get('/:authorId',async(ctx)=>{
     }
 })
 
-router.post('/',async(ctx)=>{
+router.post('/',upload.fields([{
+    name:"images",
+    maxCount:9
+}]),async(ctx)=>{
     let {name,musicUrl,words,authorId}=ctx.request.body;
+    let {images} = ctx.request.files;
+    var imagePaths="";
+    if(images&&images.length){
+        images.map(file=>{
+            let path=file.path.replace(/\\/g,'/');
+            path=path.substring(7);//删除public路径名
+            imagePaths+=`${ctx.state.serverUrl}${path};`
+        })
+    }
     try{
         let res=await Music.create({
             musicUrl:musicUrl,
             words:words,
             name:name,
-            authorId:authorId
+            authorId:authorId,
+            images:imagePaths
         })
         ctx.body={
             err:0,

@@ -9,7 +9,11 @@ const Comment=sequelize.define('comment',{
     type:Sequelize.STRING,
     parentId:Sequelize.INTEGER,
     uid:Sequelize.INTEGER,
-    content:Sequelize.STRING
+    content:Sequelize.STRING,
+    images:{
+        type:Sequelize.STRING,
+        allowNull:true
+    }
 })
 
 module.exports=Comment
