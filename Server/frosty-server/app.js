@@ -27,7 +27,7 @@ app.use(views(__dirname + '/views', {
 app.use(async (ctx, next) => {
   const start = new Date()
 
-  ctx.state.serverUrl="http://localhost:3000/"
+  ctx.state.serverUrl="http://192.168.56.1:3000/"
   await next()
   // const ms = new Date() - start
   // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)

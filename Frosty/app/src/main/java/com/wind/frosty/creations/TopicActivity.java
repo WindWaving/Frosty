@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TopicActivity extends LoadListView {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +38,14 @@ public class TopicActivity extends LoadListView {
 
     }
     void initListView(JSONArray data) throws JSONException {
-        String[] itemNames=new String[]{"topic"};
-        int[] itemIds=new int[]{R.id.topic_title};
+        String[] itemNames=new String[]{"topic","id"};
+        int[] itemIds=new int[]{R.id.topic_title,R.id.topic_id};
         ArrayList<HashMap<String,Object>> listItem=new ArrayList<HashMap<String,Object>>();
-        System.out.println("topic :"+data.length());
         for(int i=0;i<data.length();++i){
             HashMap<String,Object> map=new HashMap<String,Object>();
             JSONObject carddata=data.getJSONObject(i);
             map.put(itemNames[0],carddata.getString("content"));
+            map.put(itemNames[1],carddata.getString("tid"));
             listItem.add(map);
         }
         final SimpleAdapter mAdapter=new SimpleAdapter(this,listItem,R.layout.topic_diplay_item,itemNames,itemIds);
@@ -59,10 +62,20 @@ public class TopicActivity extends LoadListView {
                 handleOnScroll(firstVisibleItem,visibleItemCount);
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getApplicationContext(),TopicDetail.class);
+                TextView idView=view.findViewById(R.id.topic_id);
+                intent.putExtra("tid",Integer.parseInt(idView.getText().toString()));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
-    void toCreate(View view) {
+    public void toCreate(View view) {
         Intent intent=new Intent(this,TopicCreate.class);
         startActivity(intent);
     }

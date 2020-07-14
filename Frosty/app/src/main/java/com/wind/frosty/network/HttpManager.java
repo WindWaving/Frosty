@@ -99,7 +99,6 @@ public class HttpManager {
             @Override
             public void onResponse(@NotNull final Call call, @NotNull final Response response) throws IOException {
                 if(response.isSuccessful()){
-                    System.out.println("响应中");
                     String str=response.body().string();
                     JSONObject obj= null;
                     try {
@@ -115,7 +114,7 @@ public class HttpManager {
                         public void run() {
                             try {
                                 if(finalObj.getInt("err")==0){
-                                    JSONObject info;
+                                    JSONObject info = null;
                                     try{
                                         info=finalObj.getJSONObject("info");
                                     }catch (Exception e){

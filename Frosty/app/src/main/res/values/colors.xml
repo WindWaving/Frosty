@@ -8,4 +8,5 @@
     <color name="toolbarTitle">#fff</color>
     <color name="gradienBtnStart">#cdcef4</color>
     <color name="gradienBtnEnd">#fff</color>
+    <color name="line">#000</color>
 </resources>

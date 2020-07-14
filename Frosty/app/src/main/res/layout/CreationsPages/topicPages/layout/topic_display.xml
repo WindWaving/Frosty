@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/topic_listview"
-    android:padding="@dimen/outerPad"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="@dimen/itemSpace">
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/back_toolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@mipmap/back_arrow">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:id="@+id/back_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="创作"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/toolbarFont"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="创作"
+                android:layout_alignParentRight="true"
+                android:onClick="toCreate"/>
+        </RelativeLayout>
 
-</ListView>
+    </androidx.appcompat.widget.Toolbar>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topic_listview"
+        android:padding="@dimen/outerPad"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="@dimen/itemSpace">
+
+    </ListView>
+</LinearLayout>

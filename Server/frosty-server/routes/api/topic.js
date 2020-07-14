@@ -85,6 +85,30 @@ router.post('/',upload.fields([{
     }
  })
 
+ router.get('/detail/:tid',async(ctx)=>{
+     let {tid}=ctx.params;
+     try{
+         let res=await Topic.findOne({
+             where:{tid:tid},
+             include:[{
+                model:User,
+                attributes:['nickname']
+            }]
+         })
+         ctx.body={
+             err:0,
+             info:{
+                 data:res
+             }
+         }
+     }catch(err){
+         ctx.body={
+            err:-2,
+            info:"获取详情失败,"+err
+         }
+     }
+ })
+
 router.delete('/:tid',async(ctx)=>{
     let {tid}=ctx.params;
     try{

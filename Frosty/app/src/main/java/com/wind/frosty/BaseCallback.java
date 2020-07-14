@@ -12,7 +12,9 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public abstract class BaseCallback {
-    public abstract void onFailure(Call call, IOException e);
+    public void onFailure(Call call, IOException e){
+        System.out.println("响应错误: "+e.getMessage());
+    }
     public abstract void onSuccess(Call call, JSONObject jsonObject) throws IOException, JSONException;
     public abstract void onServerError(Call call,String reason);
 }

@@ -1,4 +1,4 @@
-const { Picture,Comment } = require('../../models')
+const { Picture,Comment,User,Favorites } = require('../../models')
 var router = require('koa-router')();
 router.prefix('/picture')
 const upload=require('../../multer-config')
@@ -6,14 +6,19 @@ const upload=require('../../multer-config')
 router.get('/',async(ctx)=>{
     let {offset,limit}=ctx.request.query;
     try{
-        let res=await Picture.findAll({
+        let res=await Picture.findAndCountAll({
             offset:+offset,
-            limit:+limit
+            limit:+limit,
+            include:[{
+                model:User,
+                attributes:['nickname']
+            }]
         });
         ctx.body={
             err:0,
             info:{
-                data:res
+                data:res.rows,
+                total:res.count
             }
         }
     }catch(err){
@@ -24,11 +29,36 @@ router.get('/',async(ctx)=>{
     }
 })
 
+router.get('/detail/:pid',async(ctx)=>{
+    let {pid}=ctx.params;
+    try{
+        let res=await Picture.findOne({
+            where:{pid:pid},
+            include:[{
+                model:User,
+                attributes:['nickname']
+            }]
+        })
+
+        ctx.body={
+            err:0,
+            info:{
+                data:res
+            }
+        }
+    }catch(err){
+        ctx.body={
+            err:-2,
+            info:"获取错误，"+err
+        }
+    }
+})
+
 router.get('/:authorId',async(ctx)=>{
     let {authorId}=ctx.params;
     let {offset,limit}=ctx.request.query;
     try{
-        let res=await Picture.findAll({
+        let res=await Picture.findAndCountAll({
             offset:+offset,
             limit:+limit,
             where:{authorId:authorId}
@@ -36,7 +66,8 @@ router.get('/:authorId',async(ctx)=>{
         ctx.body={
             err:0,
             info:{
-                data:res
+                data:res.rows,
+                total:res.count
             }
         }
     }catch(err){

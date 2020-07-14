@@ -18,11 +18,23 @@
         android:onClick="preview"
          />
     <TextView
-        android:id="@+id/pics_words"
+    android:id="@+id/pics_words"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/wordInPicCardHgt"
+    android:layout_marginTop="5dp"
+    android:text="@string/test_content"
+    android:textSize="16sp"
+    />
+    <TextView
+        android:id="@+id/pics_pid"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/wordInPicCardHgt"
-        android:layout_marginTop="5dp"
-        android:text="@string/test_content"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/pics_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         />
 </LinearLayout>

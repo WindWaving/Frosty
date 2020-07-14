@@ -7,6 +7,7 @@
     <dimen name="picBelow">10dp</dimen>
     <dimen name="cardZ">5dp</dimen>
     <dimen name="toolbarFont">24sp</dimen>
+    <dimen name="iconSize">30dp</dimen>
 <!--   common card-->
     <dimen name="cardCorner">10dp</dimen>
     <dimen name="likeSize">30dp</dimen>
@@ -30,14 +31,25 @@
 <!--mine page-->
     <dimen name="myCardWidth">100dp</dimen>
     <dimen name="myCardHgt">300dp</dimen>
-<!--    yiyan display-->
-<!--    music display-->
+<!--    yiyan-->
+<!--    music-->
     <dimen name="fixCardHgtS">100dp</dimen>
+    <dimen name="muDetCardH">300dp</dimen>
+    <dimen name="muDetPlayBtn">80dp</dimen>
+    <dimen name="muDetPlayBtnUp">-40dp</dimen>
+    <dimen name="muIconSize">50dp</dimen>
 
-<!--    picture display-->
+<!--    picture-->
     <dimen name="picCardHgt">120dp</dimen>
     <dimen name="picInCardHgt">80dp</dimen>
     <dimen name="wordInPicCardHgt">20dp</dimen>
+    <dimen name="picDetCardW">260dp</dimen>
+    <dimen name="picDetCardH">320dp</dimen>
+
+<!--    topic-->
+    <dimen name="backHgt">360dp</dimen>
+    <dimen name="topicDetCardW">260dp</dimen>
+    <dimen name="topicDetCardH">240dp</dimen>
 
 <!--    login-->
     <dimen name="loginCardWdt">300dp</dimen>
@@ -57,4 +69,5 @@
     <dimen name="loginTitleFont">26sp</dimen>
     <dimen name="loginTitleTop">20dp</dimen>
     <dimen name="loginTitleBot">14dp</dimen>
+
 </resources>
