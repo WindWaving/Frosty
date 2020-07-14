@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="@dimen/backHgt"
@@ -16,26 +19,42 @@
             android:layout_height="match_parent"
             android:padding="30dp">
             <TextView
-                android:id="@+id/topic_detail"
+                android:id="@+id/topic_detail_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test_content"
                 android:layout_centerVertical="true"
                 />
             <TextView
-                android:id="@+id/topic_author"
+                android:id="@+id/topic_detail_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/test_author"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
-        <ExpandableListView
-            android:id="@+id/topic_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
     </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/outerPad">
+        <com.goyourfly.multi_picture.MultiPictureView
+            android:id="@+id/topic_detail_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:editable="false"
+            app:imageLayoutMode="DYNAMIC"
+            app:max="9"
+            app:space="6dp"
+            app:span="3"
+            app:ratio="1"/>
+    </LinearLayout>
+
+    <ExpandableListView
+        android:id="@+id/topic_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

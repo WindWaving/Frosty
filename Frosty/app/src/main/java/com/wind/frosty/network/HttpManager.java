@@ -8,13 +8,17 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Handler;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -58,6 +62,37 @@ public class HttpManager {
         Request request=new Request.Builder()
                 .url(url)
                 .post(body)
+                .build();
+        doRequest(request,callback);
+    }
+
+    public void postForm(String url, Map<String,String> params,List imgUrls, final BaseCallback callback){
+        MultipartBody.Builder formBuilder=new MultipartBody.Builder();
+        formBuilder.setType(MultipartBody.FORM);
+        if(imgUrls.size()!=0){
+            for(int i=0;i<imgUrls.size();++i){
+                try{
+                    File file=new File(imgUrls.get(i).toString());
+                    formBuilder.addFormDataPart("images",file.getName(),RequestBody.create(MediaType.parse("image/*"),file));
+                }catch (Exception e){
+                    e.printStackTrace();
+                    System.out.println("创建文件对象失败,"+e.getMessage());
+                }
+
+            }
+        }else{
+            formBuilder.addFormDataPart("images",null);
+        }
+        if(params!=null){
+            for(Map.Entry<String,String>entry:params.entrySet()){
+                formBuilder.addFormDataPart(entry.getKey(),entry.getValue());
+            }
+        }
+        //请求体
+        RequestBody requestBody=formBuilder.build();
+        Request request=new Request.Builder()
+                .url(url)
+                .post(requestBody)
                 .build();
         doRequest(request,callback);
     }
@@ -126,6 +161,7 @@ public class HttpManager {
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                System.out.println("解析响应数据失败,"+e.getMessage());
                             }
 
                         }

@@ -34,6 +34,7 @@ public class ImagePreview extends AppCompatActivity {
         pv=findViewById(R.id.preview_pic);
         toolbar=findViewById(R.id.preview_bar);
         String path=getIntent().getStringExtra("path");
+        System.out.println("图片地址"+path);
         NetImage net=new NetImage(pv);
         net.execute(path);
         goback();

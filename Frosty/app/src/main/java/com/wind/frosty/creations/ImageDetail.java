@@ -29,7 +29,7 @@ public class ImageDetail extends AppCompatActivity {
     ImageView picture;
     TextView content;
     TextView author;
-    int pid;
+    String pid;
     ImageCallback callback;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +44,8 @@ public class ImageDetail extends AppCompatActivity {
 
         callback=new ImageCallback();
 
-        pid=getIntent().getIntExtra("pid",0);
-        url=HttpManager.apiUrl+"/picture/detail"+pid;
+        pid=getIntent().getStringExtra("pid");
+        url=HttpManager.apiUrl+"picture/detail/"+pid;
 
         getDetail();
     }
@@ -73,6 +73,7 @@ public class ImageDetail extends AppCompatActivity {
 
         @Override
         public void onSuccess(Call call, JSONObject jsonObject) throws IOException, JSONException {
+            System.out.println("数据："+jsonObject.getJSONObject("data"));
             JSONObject data=jsonObject.getJSONObject("data");
             content.setText(data.getString("content"));
             author.setText(data.getJSONObject("user").getString("nickname"));

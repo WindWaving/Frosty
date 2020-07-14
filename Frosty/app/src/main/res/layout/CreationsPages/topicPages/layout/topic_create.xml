@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="输入你想发布的主题"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/topic_create_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
@@ -19,7 +19,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.goyourfly.multi_picture.MultiPictureView
-        android:id="@+id/topic_image_view"
+        android:id="@+id/topic_create_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:editable="true"
@@ -30,4 +30,9 @@
         app:space="6dp"
         app:span="3"
         app:ratio="1"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:onClick="toPost"/>
 </LinearLayout>

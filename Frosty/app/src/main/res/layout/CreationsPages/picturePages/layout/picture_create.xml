@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <com.goyourfly.multi_picture.MultiPictureView
-        android:id="@+id/topic_image_view"
+        android:id="@+id/pic_create_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:editable="true"
@@ -14,21 +14,28 @@
         app:imageLayoutMode="STATIC"
         app:max="1"
         app:space="6dp"
-        app:span="1"
+        app:span="3"
         app:ratio="1"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="此图配词"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pic_create_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:onClick="toPost"
+        />
 
 </LinearLayout>
