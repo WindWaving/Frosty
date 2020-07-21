@@ -38,7 +38,11 @@ router.get('/:authorId',async(ctx)=>{
         let res=await Yiyan.findAndCountAll({
             offset:+offset,
             limit:+limit,
-            order:'createdAt DESC',
+            'order':[['createdAt','DESC']],
+            include:[{
+                model:User,
+                attributes:['nickname']               
+            }],
             where:{authorId:authorId}
         })
         ctx.body={

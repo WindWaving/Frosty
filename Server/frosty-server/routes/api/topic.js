@@ -9,6 +9,7 @@ router.get('/',async(ctx)=>{
         let res=await Topic.findAndCountAll({
             offset:+offset,
             limit:+limit,
+            'order':[['createdAt','DESC']],
             include:[{
                 model:User,
                 attributes:['nickname']
@@ -36,6 +37,7 @@ router.get('/:authorId',async(ctx)=>{
         let res=await Topic.findAndCountAll({
             offset:+offset,
             limit:+limit,
+            'order':[['createdAt','DESC']],
             where:{authorId:authorId}
         })
         ctx.body={

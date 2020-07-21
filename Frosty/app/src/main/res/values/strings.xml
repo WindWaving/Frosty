@@ -35,5 +35,6 @@
     <string name="userhint">昵称/手机号</string>
     <string name="nickname">昵称</string>
     <string name="phone">手机号</string>
+    <string name="new_pass">新密码</string>
     <string name="repeat">重复密码</string>
 </resources>

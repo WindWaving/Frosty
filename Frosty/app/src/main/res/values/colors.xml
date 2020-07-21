@@ -9,4 +9,7 @@
     <color name="gradienBtnStart">#cdcef4</color>
     <color name="gradienBtnEnd">#fff</color>
     <color name="line">#000</color>
+    <color name="myinfoCard">#93a9d5</color>
+    <color name="myinfoFont">#fff</color>
+    <color name="myworkHeaderLogo">#fff</color>
 </resources>

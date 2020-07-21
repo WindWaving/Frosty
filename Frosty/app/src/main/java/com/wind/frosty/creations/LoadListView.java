@@ -53,7 +53,6 @@ public abstract class LoadListView extends AppCompatActivity {
      */
     void handleOnScroll(int firstVisibleItem, int visibleItemCount){
         lastVisible=firstVisibleItem+visibleItemCount-1;
-        //System.out.println("最后可见"+lastVisible);
     }
 
     /**
@@ -69,7 +68,6 @@ public abstract class LoadListView extends AppCompatActivity {
      */
     void handleScrollState(BaseAdapter adapter,int scrollState){
         int lastItem=adapter.getCount()-1;//适配器中最后一项数据索引
-        //System.out.println("最后一项"+lastItem);
         if(lastVisible==lastItem){
             if(offset<total-1){
                 offset+=limit;
@@ -85,11 +83,6 @@ public abstract class LoadListView extends AppCompatActivity {
 
     class getCallback extends BaseCallback{
         @Override
-        public void onFailure(Call call, IOException e) {
-            System.out.println("出错了"+e);
-        }
-
-        @Override
         public void onSuccess(Call call, JSONObject jsonObject) throws IOException, JSONException {
             JSONArray arr=jsonObject.getJSONArray("data");
             total=jsonObject.getInt("total");
@@ -98,11 +91,6 @@ public abstract class LoadListView extends AppCompatActivity {
                 data.put(arr.getJSONObject(i));
             }
             initListView(data);
-        }
-
-        @Override
-        public void onServerError(Call call, String reason) {
-            System.out.println("服务器错误 "+reason);
         }
 
     }

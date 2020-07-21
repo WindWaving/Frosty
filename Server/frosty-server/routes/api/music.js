@@ -10,6 +10,7 @@ router.get('/',async(ctx)=>{
         let res=await Music.findAndCountAll({
             offset:+offset,
             limit:+limit,
+            'order':[['createdAt','DESC']],
             include:[{
                 model:User,
                 attributes:['nickname']
@@ -54,7 +55,7 @@ router.get('/',async(ctx)=>{
 //         }
 //     }
 // })
-router.get('/:mid',async(ctx)=>{
+router.get('/detail/:mid',async(ctx)=>{
     let {mid}=ctx.params;
     try{
         let res=await Music.findOne({
@@ -83,6 +84,7 @@ router.get('/:authorId',async(ctx)=>{
         let res=await Music.findAndCountAll({
             offset:+offset,
             limit:+limit,
+            'order':[['createdAt','DESC']],
             where:{authorId:authorId}
         })
         ctx.body={

@@ -8,6 +8,7 @@
     <dimen name="cardZ">5dp</dimen>
     <dimen name="toolbarFont">24sp</dimen>
     <dimen name="iconSize">30dp</dimen>
+    <dimen name="cardRadius">10dp</dimen>
 <!--   common card-->
     <dimen name="cardCorner">10dp</dimen>
     <dimen name="likeSize">30dp</dimen>
@@ -31,6 +32,19 @@
 <!--mine page-->
     <dimen name="myCardWidth">100dp</dimen>
     <dimen name="myCardHgt">300dp</dimen>
+    <dimen name="myCardVertical">10dp</dimen>
+    <dimen name="myCardHorizental">8dp</dimen>
+
+<!--    my basic information-->
+    <dimen name="myinfoCard">80dp</dimen>
+    <dimen name="myinfoBigCardH">200dp</dimen>
+    <dimen name="myinfoFont">20sp</dimen>
+
+<!--    change my information-->
+    <dimen name="makeMyAvatarCardH">200dp</dimen>
+    <dimen name="makeMyinfoCardW">260dp</dimen>
+    <dimen name="makeMyinfoCardH">260dp</dimen>
+    <dimen name="makeMybtn">60dp</dimen>
 <!--    yiyan-->
 <!--    music-->
     <dimen name="fixCardHgtS">100dp</dimen>

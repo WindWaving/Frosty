@@ -1,9 +1,9 @@
-package com.wind.frosty.creations;
+package com.wind.frosty.mine;
+
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import com.github.chrisbanes.photoview.PhotoView;
-import com.goyourfly.vincent.Vincent;
 import com.wind.frosty.BaseCallback;
 import com.wind.frosty.R;
+import com.wind.frosty.creations.ImageDetail;
+import com.wind.frosty.creations.ImagePreview;
 import com.wind.frosty.network.HttpManager;
 import com.wind.frosty.network.NetImageAsync;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ import java.util.List;
 
 import okhttp3.Call;
 
-public class ImageActivity extends AppCompatActivity {
+public class MyWorkPic extends Fragment {
     GridView gridView;
     List<String> imgUrls;
     HttpManager httpManager;
@@ -44,13 +43,12 @@ public class ImageActivity extends AppCompatActivity {
     int offset=0,limit=10,total=0;
     ImageCallback callback;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.picture_display);
         imgUrls=new ArrayList<>();
-        gridView=findViewById(R.id.img_gridview);
+        gridView=getActivity().findViewById(R.id.img_gridview);
         httpManager=HttpManager.getInstance();
-        url=HttpManager.apiUrl+"picture?offset="+offset+"&limit="+limit;
+        url=HttpManager.apiUrl+"picture/5?offset="+offset+"&limit="+limit;
         callback=new ImageCallback();
 
         initData();
@@ -61,12 +59,12 @@ public class ImageActivity extends AppCompatActivity {
         httpManager.get(url,callback);
     }
     private void initView(JSONArray data){
-        ImageAdapter imageAdapter=new ImageAdapter(this,data);
+        ImageAdapter imageAdapter=new ImageAdapter(getContext(),data);
         gridView.setAdapter(imageAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(getApplicationContext(),ImageDetail.class);
+                Intent intent=new Intent(getContext(), ImageDetail.class);
                 TextView tv=view.findViewById(R.id.pics_pid);
                 intent.putExtra("pid",tv.getText().toString());
                 startActivity(intent);
@@ -75,19 +73,14 @@ public class ImageActivity extends AppCompatActivity {
     }
     //预览大图
     public void preview(View view){
-        Intent intent=new Intent(this,ImagePreview.class);
+        Intent intent=new Intent(getContext(), ImagePreview.class);
         int pos=(Integer) view.getTag();
         intent.putExtra("path",imgUrls.get(pos));
         startActivity(intent);
 
     }
 
-    public void toCreate(View view){
-        Intent intent=new Intent(this,ImageCreate.class);
-        startActivity(intent);
-    }
-
-    class ImageCallback extends BaseCallback{
+    class ImageCallback extends BaseCallback {
         @Override
         public void onSuccess(Call call, JSONObject jsonObject) throws IOException, JSONException {
             JSONArray data=jsonObject.getJSONArray("data");
@@ -97,7 +90,7 @@ public class ImageActivity extends AppCompatActivity {
 
         @Override
         public void onServerError(Call call, String reason) {
-            Toast.makeText(getApplicationContext(), "服务器错误:"+reason, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "服务器错误:"+reason, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -132,10 +125,10 @@ public class ImageActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder vh;
+            ImageAdapter.ViewHolder vh;
             if (convertView == null) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.picture_display_item, null);
-                vh = new ViewHolder();
+                vh = new ImageAdapter.ViewHolder();
                 vh.img=convertView.findViewById(R.id.pics_img);
                 vh.words = convertView.findViewById(R.id.pics_words);
                 vh.pid=convertView.findViewById(R.id.pics_pid);
@@ -143,20 +136,20 @@ public class ImageActivity extends AppCompatActivity {
                 vh.img.setTag(position);//为图片添加标签为位置，便于获取url
                 convertView.setTag(vh);
             }
-            vh=(ViewHolder)convertView.getTag();
+            vh=(ImageAdapter.ViewHolder)convertView.getTag();
 
             //写入数据
 
             try {
                 String imgUrl=data.getJSONObject(position).getString("imgUrl");
                 imgUrls.add(imgUrl);
-                new PicNetImage(vh.img).execute(imgUrl);
+                new ImageAdapter.PicNetImage(vh.img).execute(imgUrl);
                 vh.words.setText(data.getJSONObject(position).getString("content"));
                 vh.pid.setText(data.getJSONObject(position).getString("pid"));
                 vh.url.setText(imgUrl);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(),"发生错误"+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"发生错误"+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
             return convertView;
         }
@@ -167,7 +160,7 @@ public class ImageActivity extends AppCompatActivity {
             TextView url;
         }
 
-        class PicNetImage extends NetImageAsync{
+        class PicNetImage extends NetImageAsync {
             private ImageView view;
             public PicNetImage(ImageView view){
                 this.view=view;
@@ -181,7 +174,4 @@ public class ImageActivity extends AppCompatActivity {
     }
 
 }
-
-
-
 
