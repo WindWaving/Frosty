@@ -1,8 +1,6 @@
 package com.wind.frosty.mine;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -14,10 +12,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
 import com.wind.frosty.R;
-import com.wind.frosty.creations.ImagePreview;
 
-public class MyCreation extends AppCompatActivity {
-
+public class MyFavorite extends AppCompatActivity {
     MaterialViewPager viewPager;
     String []tabs;
 
@@ -80,13 +76,13 @@ public class MyCreation extends AppCompatActivity {
 
                 switch (position){
                     case 0:
-                        return new MyWorkYiyan();
+                        return new MyFavorYiyan();
                     case 1:
-                        return new MyWorkTopic();
+                        return new MyFavorTopic();
                     case 2:
-                        return new MyWorkMusic();
+                        return new MyFavorMusic();
                     case 3:
-                        return new MyWorkPic();
+                        return new MyFavorPic();
                 }
                 return null;
             }
@@ -105,6 +101,4 @@ public class MyCreation extends AppCompatActivity {
         viewPager.getViewPager().setOffscreenPageLimit(viewPager.getViewPager().getAdapter().getCount());
         viewPager.getPagerTitleStrip().setViewPager(viewPager.getViewPager());
     }
-
-
 }

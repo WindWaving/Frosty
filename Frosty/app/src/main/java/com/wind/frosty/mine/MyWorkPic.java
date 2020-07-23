@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -32,10 +33,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import okhttp3.Call;
 
 public class MyWorkPic extends Fragment {
+    View rootView;
     GridView gridView;
     List<String> imgUrls;
     HttpManager httpManager;
@@ -46,16 +49,36 @@ public class MyWorkPic extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         imgUrls=new ArrayList<>();
-        gridView=getActivity().findViewById(R.id.img_gridview);
         httpManager=HttpManager.getInstance();
         url=HttpManager.apiUrl+"picture/5?offset="+offset+"&limit="+limit;
         callback=new ImageCallback();
+        System.out.println("picture");
 
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if(rootView==null){
+            rootView=inflater.inflate(R.layout.my_work_picture,container,false);
+
+        }else{
+            ViewGroup parent=(ViewGroup) rootView.getParent();
+            if(parent!=null){
+                parent.removeView(rootView);
+            }
+        }
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        gridView= getActivity().findViewById(R.id.my_image_grid);
         initData();
     }
 
     private void initData(){
-
         httpManager.get(url,callback);
     }
     private void initView(JSONArray data){
@@ -140,6 +163,12 @@ public class MyWorkPic extends Fragment {
 
             //写入数据
 
+            vh.img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    preview(v);
+                }
+            });
             try {
                 String imgUrl=data.getJSONObject(position).getString("imgUrl");
                 imgUrls.add(imgUrl);

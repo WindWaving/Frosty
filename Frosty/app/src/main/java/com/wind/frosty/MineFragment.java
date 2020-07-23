@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.wind.frosty.composites.CardComponent;
 import com.wind.frosty.mine.MyAccount;
 import com.wind.frosty.mine.MyCreation;
-import com.wind.frosty.mine.MyFavorites;
+import com.wind.frosty.mine.MyFavorite;
 
 public class MineFragment extends Fragment {
     View rootView;
@@ -25,10 +25,8 @@ public class MineFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(rootView==null){
-            System.out.println("rootview=null");
             rootView=inflater.inflate(R.layout.mine_fragment,container,false);
         }else{
-            System.out.println("rootview!=null");
             ViewGroup parent=(ViewGroup) rootView.getParent();
             if(parent!=null){
                 parent.removeView(rootView);
@@ -55,7 +53,7 @@ public class MineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent();
-                intent.setClass(getContext(), MyFavorites.class);
+                intent.setClass(getContext(), MyFavorite.class);
                 startActivity(intent);
             }
         });

@@ -30,7 +30,7 @@ import okhttp3.Call;
 
 /**
  * 子类继承方法：
- * onCreate赋值url
+ * 实现initData方法，给url和myRcyView赋值
  * 实现setAdapter方法
  * 实现适配器类
  */
@@ -43,25 +43,9 @@ public abstract class MyRecycleViewFragment extends Fragment {
     String url;
     myCallback callback;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if(rootView==null){
-            rootView=inflater.inflate(R.layout.recycler_view_fragment,container,false);
-
-        }else{
-            ViewGroup parent=(ViewGroup) rootView.getParent();
-            if(parent!=null){
-                parent.removeView(rootView);
-            }
-        }
-        return rootView;
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        myRcyView=getActivity().findViewById(R.id.my_recycle_view);
         httpManager=HttpManager.getInstance();
         data=new JSONArray();
         callback=new myCallback();
@@ -69,7 +53,9 @@ public abstract class MyRecycleViewFragment extends Fragment {
 
     }
 
+    public abstract void initData();
     private void loadData(){
+        initData();
         System.out.println("url: "+url);
         httpManager.get(url,callback);
     }

@@ -2,25 +2,68 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/itemSidePad"
     android:paddingVertical="@dimen/itemUdPad"
     android:background="@drawable/round_card"
     android:elevation="@dimen/cardZ"
+    android:layout_marginVertical="@dimen/myCardVertical"
+    android:layout_marginHorizontal="@dimen/myCardHorizental"
     >
-    <TextView
-        android:id="@+id/topic_title"
+    <RelativeLayout
+        android:id="@+id/topic_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/topic_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_content"
+            android:paddingHorizontal="@dimen/itemSidePad"
+            android:paddingVertical="@dimen/itemUdPad"
+            />
+        <TextView
+            android:id="@+id/topic_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/test_content"
-        android:paddingHorizontal="@dimen/itemSidePad"
-        android:paddingVertical="@dimen/itemUdPad"
-        />
-    <TextView
-        android:id="@+id/topic_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        />
+        >
+        <ImageButton
+            android:id="@+id/like_icon"
+            android:layout_width="@dimen/likeSize"
+            android:layout_height="@dimen/likeSize"
+            android:src="@drawable/like"
+            android:scaleType="fitCenter"
+            android:layout_toLeftOf="@id/like_cnt"
+            android:layout_marginRight="3dp"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/like_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:textSize="@dimen/likeFont"
+            android:layout_toLeftOf="@id/fav_icon"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            />
+        <ImageButton
+            android:id="@+id/fav_icon"
+            android:layout_width="@dimen/likeSize"
+            android:layout_height="@dimen/likeSize"
+            android:src="@drawable/fav"
+            android:scaleType="fitCenter"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
 
 </LinearLayout>

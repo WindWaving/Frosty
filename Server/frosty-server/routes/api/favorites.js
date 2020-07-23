@@ -15,12 +15,15 @@ router.get('/:uid/:type',async(ctx)=>{
             case "picture":{collection="pictures";id="pid";break;}
             case "topic":{collection="topics";id="tid";break;}
         }
-        let sql=`select *from favorites,${collection} where uid=${uid} and itemId=${id} limit ${+offset},${+limit}`
+        let sql=`select *from favorites,${collection},users where favorites.uid=${uid} and favorites.uid=users.uid and type="${type}" and itemId=${id} limit ${+offset},${+limit}`        
         let res=await sequelize.query(sql,{ type: sequelize.QueryTypes.SELECT });
+        sql=`select count(*) as total from favorites,${collection},users where favorites.uid=${uid} and favorites.uid=users.uid and type="${type}" and itemId=${id} limit ${+offset},${+limit}`
+        let count=await sequelize.query(sql,{ type: sequelize.QueryTypes.SELECT });
         ctx.body={
             err:0,
             info:{
-                data:res
+                data:res,
+                total:count[0].total
             }
         }
     }catch(err){

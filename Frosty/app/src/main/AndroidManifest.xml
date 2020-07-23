@@ -42,13 +42,17 @@
         <activity android:name=".creations.ImageDetail"></activity>
         <activity android:name=".mine.MyAccount"></activity>
         <activity android:name=".mine.MyCreation"></activity>
-        <activity android:name=".mine.MyFavorites"></activity>
+        <activity android:name=".mine.MyFavorite"></activity>
         <activity android:name=".creations.ImagePreview"></activity>
         <activity android:name=".creations.YiyanCreate"></activity>
         <activity android:name=".creations.MusicCreate"></activity>
         <activity android:name=".creations.TopicCreate"></activity>
         <activity android:name=".creations.ImageCreate"></activity>
         <activity android:name=".mine.LoginActivity"></activity>
+        <activity android:name=".mine.MyFavorMusic"></activity>
+        <activity android:name=".mine.MyFavorPic"></activity>
+        <activity android:name=".mine.MyFavorTopic"></activity>
+        <activity android:name=".mine.MyFavorYiyan"></activity>
 
         <service android:name=".services.MusicService" android:enabled="true"></service>
     </application>
